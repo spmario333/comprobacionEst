@@ -10,7 +10,12 @@ const app = express();
 
 
 // esto (CORS) es para poder usar desde varios dominio el backend
-app.use(cors())
+app.use(cors({
+    origin:true,
+    credentials: true,
+    methods: ['GET','POST','PUT','DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization','Accept']
+}))
 
 app.use(express.static('./public'))
 
@@ -25,6 +30,14 @@ app.use(express.json())
 app.use('/api/contact', require('./routes/contact'))
 
 
-app.listen(process.env.PORT, () => {
-    console.log(`Servidor Corriendo en el puerto ${process.env.PORT}`)
-})
+
+
+const PORT = process.env.PORT
+
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Servidor corriendo en:`);
+  console.log(`   🔗 Local: http://localhost:${PORT}`);
+  console.log(`   🔗 Red: http://172.17.42.87:${PORT}`); 
+  console.log(`📡 Accesible desde toda la red local`);
+});
