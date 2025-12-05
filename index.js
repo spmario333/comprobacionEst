@@ -22,7 +22,6 @@ app.use(express.static('./public'))
 
 
 
-
 app.use(express.json())
 
 //Rutas
@@ -38,6 +37,6 @@ const PORT = process.env.PORT
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Servidor corriendo en:`);
   console.log(`   🔗 Local: http://localhost:${PORT}`);
-  console.log(`   🔗 Red: http://172.17.42.87:${PORT}`); 
+  console.log(`   🔗 Red: http://172.17.42.145:${PORT}`); 
   console.log(`📡 Accesible desde toda la red local`);
 });
